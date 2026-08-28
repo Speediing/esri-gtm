@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { AUTH_COOKIE, passwordMatches, sessionToken } from "@/lib/auth";
+import {
+  AUTH_COOKIE,
+  hasSitePassword,
+  passwordMatches,
+  sessionToken,
+} from "@/lib/auth";
 
 function safeNext(value: string | null | undefined): string {
   if (!value || !value.startsWith("/") || value.startsWith("//")) {
@@ -23,6 +28,10 @@ export async function POST(request: Request) {
     next = safeNext(String(form.get("next") || "/"));
   }
 
+  if (!hasSitePassword()) {
+    return NextResponse.json({ ok: false }, { status: 503 });
+  }
+
   if (!passwordMatches(password)) {
     if (contentType.includes("application/json")) {
       return NextResponse.json({ ok: false }, { status: 401 });
@@ -33,11 +42,16 @@ export async function POST(request: Request) {
     return NextResponse.redirect(err, { status: 303 });
   }
 
+  const token = await sessionToken();
+  if (!token) {
+    return NextResponse.json({ ok: false }, { status: 503 });
+  }
+
   const response = contentType.includes("application/json")
     ? NextResponse.json({ ok: true, next })
     : NextResponse.redirect(new URL(next, request.url), { status: 303 });
 
-  response.cookies.set(AUTH_COOKIE, await sessionToken(), {
+  response.cookies.set(AUTH_COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",

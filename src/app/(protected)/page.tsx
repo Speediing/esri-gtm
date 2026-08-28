@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { CompareTable } from "@/components/CompareTable";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
-import { QuoteWall } from "@/components/QuoteWall";
+import { RosterChart } from "@/components/RosterChart";
 import { SiteNav } from "@/components/SiteNav";
 import { JOBS } from "@/data/jobs";
 
@@ -9,11 +10,13 @@ export default function HomePage() {
   return (
     <main id="top">
       <div className="hero-watercolor">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           className="hero-watercolor-image"
-          src="/brand/watercolor-pad.png"
+          src="/brand/cartography-hero.svg"
           alt=""
+          width={1600}
+          height={680}
+          priority
         />
         <SiteNav />
       </div>
@@ -23,12 +26,12 @@ export default function HomePage() {
           <HeroTelemetry />
           <section className="hero">
             <div>
-              <p className="eyebrow">A proactive agent for every Datadog rep</p>
-              <h1>The agents that work while your reps sell.</h1>
+              <p className="eyebrow">A proactive agent for every Esri seller</p>
+              <h1>Agents keep the work around every customer moving.</h1>
               <p className="hero-intro">
-                Grok Bot listens to calls, watches the inbox, and researches
-                accounts in the background. Work triggers it — not another
-                prompt.
+                Grok Bot can follow approved call notes, watch for customer
+                questions, and research accounts in the background. Work starts
+                the agent.
               </p>
             </div>
           </section>
@@ -36,12 +39,17 @@ export default function HomePage() {
           <section className="usecase-framing">
             <p className="eyebrow">Three sample use cases</p>
             <h2>
-              Grok Bot gives every seller their own fleet of always-available
-              agent teammates. Anything your sellers do today can be done
-              through Grok Bot.
+              Grok Bot gives each seller a fleet of agents with their own
+              computers. They keep the work around each customer moving.
             </h2>
-            <p>These are three examples from millions — not the boundary.</p>
+            <p>
+              These examples cover a live call, a product question, and account
+              research. They use illustrative sample data. Nothing is sent
+              without seller approval.
+            </p>
           </section>
+
+          <RosterChart />
 
           <div className="metric-grid">
             {JOBS.map((job) => (
@@ -68,27 +76,21 @@ export default function HomePage() {
       </div>
 
       <div className="orbit-break" aria-hidden>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/watercolor-orbit.png" alt="" />
+        <Image
+          src="/brand/cartography-orbit.svg"
+          alt=""
+          width={1600}
+          height={320}
+        />
       </div>
 
       <div className="report">
         <CompareTable />
-        <QuoteWall />
       </div>
 
       <footer className="site-footer">
-        <div>
-          <p className="footer-title">Cursor for Datadog</p>
-          <p>Grok Bot for Datadog sales</p>
-        </div>
-        <address className="footer-contact">
-          <p>Datadog&apos;s existing Cursor contact</p>
-          <strong>Madeline Ingleby</strong>
-          <a href="mailto:madeline.ingleby@cursor.com">
-            madeline.ingleby@cursor.com
-          </a>
-        </address>
+        <strong>Mike Weinert</strong>
+        <a href="mailto:mike.weinert@cursor.com">mike.weinert@cursor.com</a>
       </footer>
     </main>
   );

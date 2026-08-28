@@ -144,17 +144,17 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
           </footer>
         </div>
       );
-    case "live-transcript":
+    case "live-notes":
       return (
         <div className="story-ui story-transcript-ui" aria-hidden>
           <header className="story-ui-bar">
-            <strong>Live transcript</strong>
-            <span>{visual.timestamp}</span>
+            <strong>Live notes</strong>
+            <span>{visual.label}</span>
           </header>
-          <blockquote>
-            <strong>{visual.speaker}</strong>
-            “{visual.quote}”
-          </blockquote>
+          <div className="story-transcript-summary">
+            <strong>Organized from approved notes</strong>
+            {visual.summary}
+          </div>
           <footer>
             {visual.signals.map((signal) => (
               <span key={signal}>{signal}</span>
@@ -177,23 +177,23 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
           <footer>✓ {visual.status}</footer>
         </div>
       );
-    case "procurement-email":
+    case "product-request":
       return (
         <div className="story-ui story-email-ui" aria-hidden>
           <header className="story-ui-bar">
             <strong>Inbox</strong>
-            <span>5:27 AM</span>
+            <span>New</span>
           </header>
           <div className="story-email-body">
-            <span className="story-avatar">JH</span>
+            <span className="story-avatar">C</span>
             <p>
               <strong>{visual.sender}</strong>
               <small>{visual.subject}</small>
             </p>
           </div>
           <footer>
-            <strong>{visual.questions}</strong>
-            questions need answers
+            <strong>{visual.request}</strong>
+            Product review
           </footer>
         </div>
       );

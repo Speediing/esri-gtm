@@ -13,9 +13,6 @@ export function SiteNav() {
         <a className="text-button" href="#compare">
           Grok Bot comparison
         </a>
-        <a className="text-button" href="#testimonials">
-          Testimonials
-        </a>
       </nav>
     </header>
   );

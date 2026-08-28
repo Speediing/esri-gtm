@@ -1,17 +1,7 @@
-export type ClipId =
-  | "01-morning-inbox"
-  | "02-prospecting-pg"
-  | "03-slides-granola"
-  | "04-engineer-bugbot"
-  | "05-forecast-sfdc"
-  | "06-customer-expert"
-  | "07-customer-exec-brief"
-  | "08-chief-groupchat";
-
 export type JobId =
-  | "standardize-room"
-  | "legal-redlines"
-  | "attach-engine";
+  | "meeting-follow-up"
+  | "product-answers"
+  | "account-research";
 
 export type ParticipantRole = "you" | "bot";
 
@@ -23,9 +13,14 @@ export type Participant = {
   color?: string;
 };
 
-export type MessageKind = "text" | "draft" | "routine" | "handoff" | "system";
+export type MessageKind =
+  | "text"
+  | "draft"
+  | "routine"
+  | "handoff"
+  | "system";
 
-export type SlideVoice = "them" | "us";
+export type SlideVoice = "customer" | "seller";
 
 export type SlideCard = {
   n: number;
@@ -54,10 +49,9 @@ export type StoryVisual =
       people: { initials: string; name: string }[];
     }
   | {
-      kind: "live-transcript";
-      timestamp: string;
-      speaker: string;
-      quote: string;
+      kind: "live-notes";
+      label: string;
+      summary: string;
       signals: string[];
     }
   | {
@@ -68,10 +62,10 @@ export type StoryVisual =
       status: string;
     }
   | {
-      kind: "procurement-email";
+      kind: "product-request";
       sender: string;
       subject: string;
-      questions: number;
+      request: string;
     }
   | {
       kind: "answers-found";
@@ -105,7 +99,6 @@ export type StoryBeat = {
   label: string;
   scene: StoryScene;
   when?: string;
-  slides?: SlideCard[];
   artifact?: Artifact;
   visual?: StoryVisual;
 };
@@ -128,11 +121,12 @@ export type Artifact =
       fields: { label: string; value: string }[];
     }
   | {
-      kind: "table";
+      kind: "redlines";
       title: string;
-      caption?: string;
-      columns: string[];
-      rows: string[][];
+      paperTitle: string;
+      from: string;
+      marks: { text: string; note: string; take: boolean }[];
+      reply: { to: string; subject: string; body: string };
     }
   | {
       kind: "outbound";
@@ -151,62 +145,10 @@ export type Artifact =
       body: string;
     }
   | {
-      kind: "talk-tracks";
-      title: string;
-      tracks: { seat: string; line: string }[];
-    }
-  | {
-      kind: "forecast";
-      title: string;
-      status: string;
-      body: string;
-      account?: string;
-      amount?: string;
-      gaps?: { label: string; body: string }[];
-    }
-  | {
-      kind: "gaps";
-      title: string;
-      items: { label: string; body: string }[];
-    }
-  | {
-      kind: "questions";
-      title: string;
-      items: string[];
-    }
-  | {
-      kind: "scorecard";
-      title: string;
-      score: string;
-      notes: string[];
-      betterAnswer: string;
-      weakLine?: string;
-    }
-  | {
-      kind: "deal-kit";
-      title: string;
-      weeks: { label: string; body: string }[];
-      pack: string[];
-    }
-  | {
-      kind: "redlines";
-      title: string;
-      paperTitle: string;
-      from: string;
-      marks: { text: string; note: string; take: boolean }[];
-      reply: { to: string; subject: string; body: string };
-    }
-  | {
       kind: "gmail";
       title: string;
       to: string;
       subject: string;
-      body: string;
-    }
-  | {
-      kind: "slack";
-      title: string;
-      channel: string;
       body: string;
     };
 
@@ -227,14 +169,6 @@ export type DemoThread = {
   messages: DemoMessage[];
 };
 
-export type Clip = {
-  id: ClipId;
-  file: string;
-  poster: string;
-  title: string;
-  caption: string;
-};
-
 export type CroJob = {
   id: JobId;
   number: number;
@@ -246,15 +180,5 @@ export type CroJob = {
   storyboard: StoryBeat[];
   unlock: string;
   outcome: string;
-  clips: ClipId[];
   demo: DemoThread;
-};
-
-export type Quote = {
-  name: string;
-  handle: string;
-  date: string;
-  avatar: string;
-  quote: string;
-  source: string;
 };

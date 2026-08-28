@@ -1,19 +1,13 @@
-import type { ClipId, JobId } from "./types";
+import type { JobId } from "./types";
 
 export type SiteKind =
   | "granola"
   | "figma"
-  | "gong"
-  | "sfdc-account"
-  | "sfdc-opp"
-  | "sheets"
-  | "gmail"
-  | "slack"
   | "gdoc"
+  | "gmail"
   | "linkedin"
   | "research"
-  | "page"
-  | "clip";
+  | "page";
 
 export type ChromeTab = {
   id: string;
@@ -27,211 +21,175 @@ export type ComputerBeat = {
   path?: string;
   title: string;
   site: SiteKind;
-  clip?: ClipId;
   tabs: ChromeTab[];
 };
 
 const granola = { id: "granola", host: "granola.app", label: "Granola" };
 const figma = { id: "figma", host: "figma.com", label: "Figma" };
 const gmail = { id: "gmail", host: "mail.google.com", label: "Gmail" };
-const gong = { id: "gong", host: "app.gong.io", label: "Gong" };
-const sfdc = {
-  id: "sfdc",
-  host: "datadog.lightning.force.com",
-  label: "Salesforce",
-};
-const sheets = {
-  id: "sheets",
-  host: "docs.google.com",
-  label: "Sheets",
-};
-const slack = { id: "slack", host: "app.slack.com", label: "Slack" };
-const gdoc = { id: "gdoc", host: "docs.google.com", label: "Docs" };
+const docs = { id: "docs", host: "docs.google.com", label: "Docs" };
 const linkedin = {
   id: "linkedin",
   host: "www.linkedin.com",
   label: "LinkedIn",
 };
-const web = { id: "web", host: "acme.com", label: "Acme" };
+const publicWeb = {
+  id: "public",
+  host: "example.com",
+  label: "Public sources",
+};
 
 export const SCREENS: Record<JobId, Record<string, ComputerBeat>> = {
-  "standardize-room": {
+  "meeting-follow-up": {
     m1: {
-      pill: "Opening Granola",
+      pill: "Opening approved call notes",
       host: "granola.app",
-      path: "/notes/acme-datadog",
-      title: "Acme <> Datadog",
+      path: "/notes/sample-account",
+      title: "Sample account notes",
       site: "granola",
       tabs: [granola, figma, gmail],
     },
     m2: {
-      pill: "In Granola",
+      pill: "Organizing the call outline",
       host: "granola.app",
-      path: "/notes/acme-datadog",
-      title: "Acme <> Datadog",
+      path: "/notes/sample-account",
+      title: "Sample account notes",
       site: "granola",
       tabs: [granola, figma, gmail],
     },
     m3: {
-      pill: "Pulling Granola, still on the call",
-      host: "granola.app",
-      path: "/notes/acme-datadog",
-      title: "Acme <> Datadog",
-      site: "clip",
-      clip: "03-slides-granola",
+      pill: "Drafting the discovery summary",
+      host: "figma.com",
+      path: "/file/sample-discovery",
+      title: "Sample account discovery summary",
+      site: "figma",
       tabs: [granola, figma, gmail],
     },
     m4: {
-      pill: "Writing their discovery into the deck",
-      host: "figma.com",
-      path: "/file/acme-next-meeting",
-      title: "Acme next meeting",
-      site: "figma",
-      tabs: [granola, figma, gmail],
+      pill: "Preparing the customer brief",
+      host: "docs.google.com",
+      path: "/document/sample-brief",
+      title: "Sample account brief",
+      site: "gdoc",
+      tabs: [granola, docs, gmail],
     },
     m5: {
-      pill: "Drafting the one-pager",
-      host: "figma.com",
-      path: "/file/acme-leave-behind",
-      title: "Acme one-pager",
-      site: "figma",
-      tabs: [granola, figma, gmail],
+      pill: "Drafting the follow-up",
+      host: "mail.google.com",
+      path: "/mail/u/0/#drafts",
+      title: "Drafts",
+      site: "gmail",
+      tabs: [granola, docs, gmail],
     },
     m6: {
-      pill: "Building the inside note",
-      host: "figma.com",
-      path: "/file/acme-champion-packet",
-      title: "Inside note",
-      site: "figma",
-      tabs: [granola, figma, gmail],
-    },
-    m7: {
-      pill: "Drafting in Gmail, not sent",
+      pill: "Drafts parked for approval",
       host: "mail.google.com",
       path: "/mail/u/0/#drafts",
       title: "Drafts",
       site: "gmail",
-      tabs: [granola, figma, gmail],
-    },
-    m8: {
-      pill: "Drafting in Gmail, not sent",
-      host: "mail.google.com",
-      path: "/mail/u/0/#drafts",
-      title: "Drafts",
-      site: "gmail",
-      tabs: [granola, figma, gmail],
+      tabs: [granola, docs, gmail],
     },
   },
-  "legal-redlines": {
+  "product-answers": {
     m1: {
-      pill: "Opening Gmail",
+      pill: "Opening the customer request",
       host: "mail.google.com",
       path: "/mail/u/0/#inbox",
       title: "Inbox",
       site: "gmail",
-      tabs: [gmail, gdoc],
+      tabs: [gmail, docs],
     },
     m2: {
-      pill: "Drafting so you do not chase billing",
-      host: "mail.google.com",
-      path: "/mail/u/0/#inbox",
-      title: "Inbox",
-      site: "clip",
-      clip: "01-morning-inbox",
-      tabs: [gmail, gdoc],
+      pill: "Checking approved sources",
+      host: "docs.google.com",
+      path: "/document/product-references",
+      title: "Product references",
+      site: "gdoc",
+      tabs: [gmail, docs],
     },
     m3: {
-      pill: "Drafting the morning reply, not sent",
+      pill: "Preparing the answer packet",
       host: "docs.google.com",
-      path: "/document/d/acme-invoices",
-      title: "Acme invoices INV-0080 · INV-0081",
+      path: "/document/answer-packet",
+      title: "Product answer packet",
       site: "gdoc",
-      tabs: [gmail, gdoc],
+      tabs: [gmail, docs],
     },
     m4: {
-      pill: "Drafting in Gmail, not sent",
+      pill: "Drafting the reply",
       host: "mail.google.com",
       path: "/mail/u/0/#drafts",
       title: "Drafts",
       site: "gmail",
-      tabs: [gmail, gdoc],
+      tabs: [gmail, docs],
     },
     m5: {
-      pill: "Drafting in Gmail, not sent",
+      pill: "Reply parked for approval",
       host: "mail.google.com",
       path: "/mail/u/0/#drafts",
       title: "Drafts",
       site: "gmail",
-      tabs: [gmail, gdoc],
+      tabs: [gmail, docs],
     },
   },
-  "attach-engine": {
+  "account-research": {
     m1: {
-      pill: "Researching the account",
-      host: "acme.com",
-      path: "/careers/staff-sre",
-      title: "Staff SRE · Observability",
+      pill: "Checking public sources",
+      host: "example.com",
+      path: "/sample-account",
+      title: "Sample account public sources",
       site: "research",
-      tabs: [web, gdoc, linkedin, gmail],
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
     m2: {
-      pill: "Pulling public evidence of the pain",
-      host: "acme.com",
-      path: "/status",
-      title: "Acme status",
-      site: "clip",
-      clip: "02-prospecting-pg",
-      tabs: [web, gdoc, linkedin, gmail],
+      pill: "Separating facts from questions",
+      host: "example.com",
+      path: "/sample-account",
+      title: "Sample account public sources",
+      site: "research",
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
     m3: {
-      pill: "Writing the 3-why hypothesis",
+      pill: "Drafting the account brief",
       host: "docs.google.com",
-      path: "/document/d/acme-3-why",
-      title: "Acme 3-why",
+      path: "/document/sample-account-brief",
+      title: "Sample account research plan",
       site: "gdoc",
-      tabs: [web, gdoc, linkedin, gmail],
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
     m4: {
-      pill: "Naming who would care",
+      pill: "Building the source checklist",
       host: "docs.google.com",
-      path: "/document/d/acme-3-why",
-      title: "Acme 3-why",
+      path: "/document/sample-account-sources",
+      title: "Public sources to review",
       site: "gdoc",
-      tabs: [web, gdoc, linkedin, gmail],
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
     m5: {
-      pill: "Drafting LinkedIn, not sent",
+      pill: "Drafting role-based outreach",
       host: "www.linkedin.com",
       path: "/messaging/compose",
       title: "Message",
       site: "linkedin",
-      tabs: [web, gdoc, linkedin, gmail],
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
     m6: {
-      pill: "Drafting in Gmail, not sent",
-      host: "mail.google.com",
-      path: "/mail/u/0/#drafts",
-      title: "Drafts",
-      site: "gmail",
-      tabs: [web, gdoc, linkedin, gmail],
+      pill: "Preparing the account page",
+      host: "docs.google.com",
+      path: "/document/sample-account-page",
+      title: "Sample account page",
+      site: "page",
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
     m7: {
-      pill: "Building a page for this account",
-      host: "acme.datadoghq.dev",
-      path: "/acme-sev2",
-      title: "For Acme platform",
-      site: "page",
-      tabs: [web, gdoc, linkedin, gmail],
-    },
-    m8: {
-      pill: "Drafts parked. Nothing sent",
+      pill: "Drafts parked for approval",
       host: "mail.google.com",
       path: "/mail/u/0/#drafts",
       title: "Drafts",
       site: "gmail",
-      tabs: [web, gdoc, linkedin, gmail],
+      tabs: [publicWeb, docs, linkedin, gmail],
     },
-  }
+  },
 };
 
 export function beatFor(

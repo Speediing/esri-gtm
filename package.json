@@ -1,12 +1,14 @@
 {
-  "name": "datadog-cro",
+  "name": "esri-grokbot",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "audit": "node scripts/audit-esri-content.mjs"
   },
   "dependencies": {
     "geist": "^1.7.2",

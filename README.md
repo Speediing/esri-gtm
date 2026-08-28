@@ -1,31 +1,35 @@
-# Grok Bot for Datadog GTM
+# Grok Bot for Esri sales
 
-Passworded site. Grok Bot from SpaceXAI, for Datadog GTM.
+This password-protected site presents three illustrative Grok Bot workflows for Esri sellers. Each workflow includes a storyboard and an interactive agent demo. The demos use sample data and do not send messages.
 
-## What it is
-
-Three GTM jobs on one page. Each job has a short problem statement, an interactive Grok Bot demo, and the matching Krista Letz clips under that demo. Below that: a light index of the clips and the public Grok Bot quote wall.
-
-## Run locally
+## Run the site locally
 
 ```bash
 cp .env.example .env.local
+```
+
+Set a local `SITE_PASSWORD` in `.env.local`. Then run:
+
+```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Default password is `land2expand` (override with `SITE_PASSWORD`).
+Open [http://localhost:3000](http://localhost:3000).
 
-## Krista clips
-
-Download into `private/media/krista-clips/` from the GitHub release (served only through the passworded `/api/media/...` route):
+## Check a change
 
 ```bash
-gh release download krista-gtm-clips-720p-2026-08-26 \
-  --repo Speediing/grok-bot-quotes \
-  --dir private/media/krista-clips
+npm run audit
+npm run lint
+npm run typecheck
+npm run build
 ```
+
+## Brand assets
+
+The lockup loads the Esri mark from the official [Esri-hosted asset](https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg). The site uses the mark in its entirety. `public/brand/spacexai.svg` contains the SpaceXAI wordmark.
 
 ## Deploy
 
-Preview only under the `jasonwiker` Vercel team, project name `datadog-cro`. Set `SITE_PASSWORD=land2expand`. Do not promote to a public production domain until Jason says so.
+Deploy the `esri-grokbot` project to the `jasonwiker` Vercel scope. Set `SITE_PASSWORD` in Vercel. Do not add the password value to tracked files.

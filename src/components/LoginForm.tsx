@@ -3,19 +3,23 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
 
+type LoginError = "none" | "wrong-password" | "not-configured";
+
 export function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
   const next = params.get("next") || "/";
   const errored = params.get("error") === "1";
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(errored);
+  const [error, setError] = useState<LoginError>(
+    errored ? "wrong-password" : "none",
+  );
   const [pending, setPending] = useState(false);
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
     setPending(true);
-    setError(false);
+    setError("none");
     const response = await fetch("/api/login", {
       method: "POST",
       headers: { "content-type": "application/json", accept: "application/json" },
@@ -23,7 +27,9 @@ export function LoginForm() {
     });
     setPending(false);
     if (!response.ok) {
-      setError(true);
+      setError(
+        response.status === 503 ? "not-configured" : "wrong-password",
+      );
       return;
     }
     const data = (await response.json()) as { next?: string };
@@ -43,9 +49,16 @@ export function LoginForm() {
         onChange={(event) => setPassword(event.target.value)}
         required
       />
-      {error ? <p className="login-error">Wrong password. Try again.</p> : null}
+      {error === "wrong-password" ? (
+        <p className="login-error">Wrong password. Try again.</p>
+      ) : null}
+      {error === "not-configured" ? (
+        <p className="login-error">
+          Site access is not configured. Contact the site owner.
+        </p>
+      ) : null}
       <button type="submit" disabled={pending}>
-        {pending ? "Checking…" : "Open the site"}
+        {pending ? "Checking..." : "Open the site"}
       </button>
     </form>
   );

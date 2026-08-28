@@ -2,6 +2,15 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.esri.com",
+        pathname: "/content/dam/esrisites/common/logos/esri-logo.jpg",
+      },
+    ],
+  },
   transpilePackages: ["vgpu", "@vgpu/core", "@vgpu/wgsl"],
   turbopack: {
     rules: {

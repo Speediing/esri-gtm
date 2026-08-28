@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 680" role="img" aria-label="Abstract cartographic contours">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102729"/>
+      <stop offset="0.55" stop-color="#17464d"/>
+      <stop offset="1" stop-color="#366f70"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="38%" r="48%">
+      <stop offset="0" stop-color="#8fc7b6" stop-opacity=".5"/>
+      <stop offset="1" stop-color="#8fc7b6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0v64" fill="none" stroke="#d7eee6" stroke-opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="680" fill="url(#bg)"/>
+  <rect width="1600" height="680" fill="url(#glow)"/>
+  <rect width="1600" height="680" fill="url(#grid)"/>
+  <g fill="none" stroke="#d7eee6" stroke-opacity=".34" stroke-width="2">
+    <path d="M-80 520C140 390 280 570 480 434S840 238 1050 360s348 18 630-166"/>
+    <path d="M-70 564C150 430 302 614 506 472s366-204 570-80 346 20 624-148"/>
+    <path d="M-60 608C160 472 324 654 532 510s372-210 570-82 344 22 618-130"/>
+    <path d="M160 18c104 98 218 92 320 12s226-80 322 8 212 96 350 12 268-78 416 44"/>
+    <path d="M94 84c118 96 236 90 342 10s232-76 332 12 218 92 354 6 266-74 430 40"/>
+  </g>
+  <g fill="none" stroke="#b9dfd2" stroke-opacity=".23" stroke-width="2">
+    <path d="M1010 72c-168 4-302 112-300 244s140 228 306 220 294-112 286-240-126-228-292-224Z"/>
+    <path d="M1012 112c-140 2-252 88-250 198s116 190 254 184 244-88 238-194-104-190-242-188Z"/>
+    <path d="M1014 152c-112 2-202 68-200 154s92 150 204 146 194-70 190-152-84-148-194-148Z"/>
+    <path d="M1018 192c-84 0-152 48-150 110s68 110 152 108 144-50 142-110-62-108-144-108Z"/>
+  </g>
+  <g fill="#d7eee6">
+    <circle cx="188" cy="470" r="5"/>
+    <circle cx="512" cy="445" r="5"/>
+    <circle cx="842" cy="305" r="5"/>
+    <circle cx="1180" cy="390" r="5"/>
+  </g>
+</svg>
