@@ -229,7 +229,7 @@ function inspectRequiredContent() {
   const requiredTitles = [
     "Update decks in real time",
     "Find product and internal answers fast",
-    "Pipeline generation is now easier than ever.",
+    "Pipeline generation is now easier than ever",
   ];
   const jobsRegistry = source.jobs.slice(
     source.jobs.indexOf("export const JOBS"),

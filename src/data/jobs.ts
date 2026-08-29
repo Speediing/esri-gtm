@@ -381,7 +381,7 @@ export const JOBS: CroJob[] = [
   {
     id: "account-research",
     number: 3,
-    title: "Pipeline generation is now easier than ever.",
+    title: "Pipeline generation is now easier than ever",
     trigger: "an account enters the target list",
     backgroundAction: "Researching public sources and preparing draft outreach",
     problem:
