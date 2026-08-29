@@ -81,7 +81,6 @@ a:hover {
 
 button,
 .metric-card,
-.org-box,
 .job-more summary,
 .clip-rates button,
 .demo-tools button,
@@ -99,7 +98,6 @@ button,
 
 button,
 .metric-card,
-.org-box,
 .job-more summary,
 .clip-rates button,
 .demo-tools button,
@@ -116,7 +114,6 @@ button,
 
 button:active:not(:focus-visible),
 .metric-card:active:not(:focus-visible),
-.org-box:active:not(:focus-visible),
 .job-more summary:active:not(:focus-visible),
 .clip-rates button:active:not(:focus-visible),
 .demo-tools button:active:not(:focus-visible),
@@ -207,15 +204,6 @@ button:active:not(:focus-visible),
     color: var(--ink);
   }
 
-  .org-box:hover {
-    border-color: var(--ink);
-    background: var(--paper);
-  }
-
-  .org-box:hover .org-name {
-    color: var(--ink);
-  }
-
   .job-more summary:hover {
     color: var(--ink);
   }
@@ -240,7 +228,6 @@ button:active:not(:focus-visible),
 
   button,
   .metric-card,
-  .org-box,
   .job-more summary,
   .clip-rates button,
   .demo-tools button,
@@ -257,7 +244,6 @@ button:active:not(:focus-visible),
 
   button:active,
   .metric-card:active,
-  .org-box:active,
   .job-more summary:active,
   .clip-rates button:active,
   .demo-tools button:active,
@@ -325,7 +311,6 @@ button:active:not(:focus-visible),
 }
 
 .brand-esri,
-.brand-esri-fallback,
 .brand-sxai {
   display: block;
   width: auto;
@@ -337,15 +322,6 @@ button:active:not(:focus-visible),
 
 .brand-esri {
   height: var(--brand-h);
-}
-
-.brand-esri-fallback {
-  height: var(--brand-h);
-  color: var(--ink);
-  font-size: calc(var(--brand-h) * 0.82);
-  font-weight: 650;
-  letter-spacing: -0.07em;
-  line-height: var(--brand-h);
 }
 
 .brand-sxai {
@@ -962,7 +938,6 @@ button:active:not(:focus-visible),
   letter-spacing: -0.011em;
 }
 
-#roster,
 #jobs,
 #gallery,
 .job {
@@ -983,7 +958,6 @@ button:active:not(:focus-visible),
 .narrative h2,
 .section-heading h2,
 .job-title,
-.roster h2,
 .quotes h2,
 .compare h2,
 .gallery h2 {
@@ -1018,26 +992,6 @@ button:active:not(:focus-visible),
   position: relative;
   z-index: 1;
   min-width: 0;
-}
-
-.job-art {
-  position: absolute;
-  z-index: 0;
-  top: -6%;
-  right: -8%;
-  width: min(36rem, 55%);
-  pointer-events: none;
-}
-
-.job-art img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.job-art .job-watercolor {
-  opacity: 0.26;
-  mix-blend-mode: multiply;
 }
 
 .background-agent {
@@ -4303,16 +4257,6 @@ button:active:not(:focus-visible),
   display: none;
 }
 
-.roster {
-  position: relative;
-  z-index: 1;
-  padding: 100px 0 110px;
-  overflow: visible;
-  background: transparent;
-  border-top: 1px solid var(--line);
-}
-
-.roster h2,
 .gallery h2,
 .quotes h2,
 .compare h2,
@@ -4320,73 +4264,9 @@ button:active:not(:focus-visible),
   scroll-margin-top: 4.75rem;
 }
 
-.org {
-  margin-top: 2.4rem;
-}
-
-.org-box {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 0.75rem;
-  row-gap: 0.15rem;
-  align-items: center;
-  width: 100%;
-  padding: 0.85rem 0.95rem;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  background: var(--surface);
-  color: inherit;
-  text-decoration: none;
-  -webkit-text-decoration: none;
-}
-
-.org-avatar {
-  grid-row: 1 / span 2;
-  display: inline-grid;
-  place-items: center;
-  width: 1.85rem;
-  height: 1.85rem;
-  border-radius: 999px;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1;
-}
-
-.org-name {
-  grid-column: 2;
-  color: var(--ink);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  text-decoration: none;
-}
-
-.org-blurb {
-  grid-column: 2;
-  color: var(--ink-soft);
-  font-size: 0.78rem;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.org-box:focus-visible {
-  border-color: var(--ink);
-  background: var(--paper);
-  text-decoration: none;
-}
-
-.org-box:focus-visible .org-name {
-  color: var(--ink);
-  text-decoration: none;
-}
-
 .band-cream h2,
-.band-cream .roster h2,
 .band-cream .quotes h2,
 .band-cream .job-title,
-.band-cream .org-name,
 .band-cream .quote-name,
 .band-cream .clip-title {
   color: #0a0a0a;
@@ -4398,28 +4278,11 @@ button:active:not(:focus-visible),
 
 .band-cream .section-lede,
 .band-cream .job-bot,
-.band-cream .org-blurb,
 .band-cream .clip-caption,
 .band-cream .clip-used,
 .band-cream .quote-handle,
 .band-cream .quote-source {
   color: var(--ink-soft);
-}
-
-.band-cream .org-box {
-  background: #fff;
-  border-color: rgba(10, 10, 10, 0.08);
-}
-
-.band-cream .org-box:hover,
-.band-cream .org-box:focus-visible {
-  background: #fff;
-  border-color: rgba(10, 10, 10, 0.18);
-}
-
-.band-cream .org-box:hover .org-name,
-.band-cream .org-box:focus-visible .org-name {
-  color: #111;
 }
 
 .band-cream .demo-tools button,
@@ -4441,27 +4304,6 @@ button:active:not(:focus-visible),
 .quotes {
   padding: 100px 0 110px;
   border-top: 1px solid var(--line);
-}
-
-.org-kids {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.org-kid {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.roster-note {
-  margin: 1rem 0 0;
-  color: var(--ink-soft);
-  font-size: 0.82rem;
 }
 
 .gb-window {
@@ -5388,11 +5230,6 @@ button:active:not(:focus-visible),
     display: none;
   }
 
-  .roster {
-    padding: 2.75rem 0 3.25rem;
-  }
-
-  .roster h2,
   .gallery h2,
   .quotes h2,
   .compare h2 {
@@ -5499,12 +5336,6 @@ button:active:not(:focus-visible),
 
   .leave-cards li {
     min-height: 0;
-  }
-
-  .job-art {
-    top: 8%;
-    right: -16%;
-    width: min(22rem, 92%);
   }
 
   .job-title {
@@ -5792,22 +5623,6 @@ button:active:not(:focus-visible),
     height: 34rem;
     max-height: 34rem;
     border-radius: 1.85rem;
-  }
-}
-
-@media (max-width: 960px) {
-  .org-kids {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .org-kid {
-    padding: 0;
-  }
-
-  .org-box {
-    padding: 1rem 1.05rem;
   }
 }
 

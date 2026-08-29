@@ -1,34 +1,19 @@
-"use client";
-
 import Image from "next/image";
-import { useState } from "react";
 
 export function BrandLockup({
   size = "md",
 }: {
   size?: "sm" | "md" | "lg";
 }) {
-  const [markFailed, setMarkFailed] = useState(false);
-
   return (
     <div className={`brand-lockup brand-lockup-${size}`}>
-      {markFailed ? (
-        <span className="brand-esri-fallback" aria-label="Esri">
-          esri
-        </span>
-      ) : (
-        <Image
-          // TODO: Replace this temporary remote reference with a local copy from
-          // https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg
-          // when access is available. Do not substitute or generate a mark.
-          src="https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg"
-          alt="Esri"
-          className="brand-esri"
-          width={270}
-          height={117}
-          onError={() => setMarkFailed(true)}
-        />
-      )}
+      <Image
+        src="/brand/esri-wordmark.jpg"
+        alt="Esri"
+        className="brand-esri"
+        width={270}
+        height={117}
+      />
       <span className="brand-times" aria-hidden>
         ×
       </span>

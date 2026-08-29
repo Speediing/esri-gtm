@@ -11,11 +11,11 @@ export function HeroDemo() {
   return (
     <section className="hero hero-demo" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">A proactive agent for every Esri seller</p>
-        <h1 id="hero-title">Agents keep the work around every customer moving.</h1>
+        <p className="eyebrow">Grok Bot for Esri sales</p>
+        <h1 id="hero-title">The agents that work while your reps sell.</h1>
         <p className="hero-intro">
-          Give each agent a job and a computer. It can prepare the work while
-          you sell, then bring the finished draft back for review.
+          Set the outcome. An agent opens the tools, prepares the work, and
+          brings a finished draft back for review.
         </p>
 
         <div

@@ -18,7 +18,7 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Call follow-up",
     agent: "Follow-up agent",
     color: "#3b7f8f",
-    user: "Turn the approved call notes into a short follow-up.",
+    user: "Turn the approved Acme call notes into a short follow-up.",
     replies: [
       "I grouped the topics, open questions, and next steps.",
       "I left anything unconfirmed out. The draft is ready for you.",
@@ -34,9 +34,9 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Product answer",
     agent: "Product agent",
     color: "#597a63",
-    user: "Find approved Esri material for this product question.",
+    user: "Find approved ArcGIS material for this GIS question.",
     replies: [
-      "I checked the product documentation and release notes.",
+      "I checked the ArcGIS documentation and release notes.",
       "One detail still needs an internal owner. I marked it in the draft.",
     ],
     artifact: {
@@ -50,7 +50,7 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Account brief",
     agent: "Research agent",
     color: "#6f7e4f",
-    user: "Build a brief from public sources for my review.",
+    user: "Build an Acme brief from public sources for my review.",
     replies: [
       "I separated public facts from the working sales hypothesis.",
       "Every fact links back to its source.",
@@ -66,7 +66,7 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Meeting prep",
     agent: "Prep agent",
     color: "#8a6f49",
-    user: "Prep me for tomorrow's customer meeting.",
+    user: "Prep me for tomorrow's Acme meeting.",
     replies: [
       "I reviewed the notes, open questions, and agreed actions.",
       "The brief starts with what needs a decision in the room.",
@@ -82,7 +82,7 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Proposal review",
     agent: "Proposal agent",
     color: "#7e5f70",
-    user: "Check this proposal before I send it.",
+    user: "Check this Acme proposal before I send it.",
     replies: [
       "I checked the draft against the approved account notes.",
       "I flagged two claims that need confirmation and kept it in review.",
@@ -98,7 +98,7 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Executive brief",
     agent: "Briefing agent",
     color: "#566f8b",
-    user: "Give my leader the short version of this account.",
+    user: "Give my leader the short version of Acme.",
     replies: [
       "I pulled the latest notes and dated next actions.",
       "The brief fits on one page and keeps assumptions labeled.",
@@ -114,7 +114,7 @@ export const HERO_JOBS: HeroJob[] = [
     label: "Renewal prep",
     agent: "Renewal agent",
     color: "#587a75",
-    user: "Organize the account history for renewal prep.",
+    user: "Organize the Acme history for renewal prep.",
     replies: [
       "I brought the approved history, open questions, and owners together.",
       "I marked every missing date for the seller to confirm.",

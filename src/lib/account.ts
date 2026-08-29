@@ -1,4 +1,4 @@
-const DEFAULT_ACCOUNT = "Sample account";
+const DEFAULT_ACCOUNT = "Acme";
 
 function walk(value: unknown, from: string, to: string): unknown {
   if (typeof value === "string") {

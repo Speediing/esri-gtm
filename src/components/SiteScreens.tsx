@@ -99,7 +99,7 @@ function GranolaScreen({ account }: { account: string }) {
           <span>Review</span> Unconfirmed details kept out of the draft.
         </li>
         <li>
-          <span>Next</span> Relevant Esri material ready to attach.
+          <span>Next</span> Relevant ArcGIS mapping material ready to attach.
         </li>
       </ul>
     </div>
@@ -131,7 +131,7 @@ function FigmaScreen({
             </p>
             <p>
               <b>Product material</b>
-              Attach only approved Esri references.
+              Attach only approved ArcGIS references.
             </p>
             <p>
               <b>Review</b>
@@ -310,7 +310,7 @@ function PageScreen({
       <h4>{artifact?.page.headline || `A source-linked note for ${account}`}</h4>
       <p>
         {artifact?.page.body ||
-          "Summarize the public signal, the possible Esri fit, and the question the seller should validate."}
+          "Summarize the public signal, the possible location intelligence fit, and the question the seller should validate."}
       </p>
       {artifact?.evidence.map((item) => (
         <p key={item.source}>

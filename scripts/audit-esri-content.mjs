@@ -11,8 +11,6 @@ import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const packagePath = resolve(root, "package.json");
-const allowedExternalImageSource =
-  "https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg";
 const ignoredDirectories = new Set([
   ".git",
   ".next",
@@ -27,7 +25,6 @@ const ignoredDirectories = new Set([
 ]);
 const deniedTerms = [
   ["data", "dog"],
-  ["Ac", "me"],
   ["Kri", "sta"],
   ["Sea", "gate"],
   ["Made", "line"],
@@ -44,10 +41,15 @@ const deniedTerms = [
   ["#63", "2ca6"],
   ["99,", " 44,", " 166"],
   ["land", "2", "expand"],
+  ["TA", "RS"],
+  ["PI", "XIE"],
+  ["Account", "Context"],
+  ["Sample ", "account"],
+  ["simple", "-", "icons"],
 ].map((parts) => parts.join(""));
 const retiredDirectoryNames = new Set([
   ["me", "dia"].join(""),
-  ["ava", "tars"].join(""),
+  ["ava", "ta", "rs"].join(""),
 ]);
 const violations = [];
 const violationKeys = new Set();
@@ -134,7 +136,7 @@ function externalImageSources(text) {
 
 function inspectBrandReferences(sourcePath, text) {
   const references =
-    text.match(/\/brand\/[a-z0-9._~!$&'+,;=:@%/-]+/gi) || [];
+    text.match(/\/brand\/[a-z0-9._~!$&+=:@%/-]+/gi) || [];
   for (const reference of new Set(references)) {
     let decoded;
     try {
@@ -198,6 +200,76 @@ function inspectPackage() {
   }
 }
 
+function inspectRequiredContent() {
+  const requiredFiles = {
+    hero: "src/components/HeroDemo.tsx",
+    jobs: "src/data/jobs.ts",
+    lockup: "src/components/BrandLockup.tsx",
+    page: "src/app/(protected)/page.tsx",
+  };
+  const source = Object.fromEntries(
+    Object.entries(requiredFiles).map(([key, path]) => [
+      key,
+      readFileSync(resolve(root, path), "utf8"),
+    ]),
+  );
+
+  const requiredHero =
+    '<h1 id="hero-title">The agents that work while your reps sell.</h1>';
+  if (!source.hero.includes(requiredHero)) {
+    addViolation(requiredFiles.hero, "hero heading does not match approved copy");
+  }
+  for (const className of ["hero-phone", "hero-bot-demo"]) {
+    if (!source.hero.includes(`className="${className}"`)) {
+      addViolation(requiredFiles.hero, `missing live ${className} demo`);
+    }
+  }
+
+  const requiredTitles = [
+    "Update decks in real time",
+    "Find product and internal answers fast",
+    "Pipeline generation is now easier than ever.",
+  ];
+  const jobsRegistry = source.jobs.slice(
+    source.jobs.indexOf("export const JOBS"),
+  );
+  const actualTitles = [...jobsRegistry.matchAll(/^    title: "([^"]+)",$/gm)].map(
+    (match) => match[1],
+  );
+  if (JSON.stringify(actualTitles) !== JSON.stringify(requiredTitles)) {
+    addViolation(requiredFiles.jobs, "use-case titles do not match approved copy");
+  }
+  if (!source.jobs.includes('account: "Acme"')) {
+    addViolation(requiredFiles.jobs, "Acme must remain in the scene data");
+  }
+
+  if (!source.lockup.includes('src="/brand/esri-wordmark.jpg"')) {
+    addViolation(requiredFiles.lockup, "Esri wordmark must use the local official asset");
+  }
+  if (!source.page.includes('src="/brand/esri-falcon-cartography.jpg"')) {
+    addViolation(requiredFiles.page, "missing Esri and Falcon hero art");
+  }
+  if (/RosterChart/.test(source.page)) {
+    addViolation(requiredFiles.page, "RosterChart must not render");
+  }
+  for (const retiredPath of [
+    "src/components/RosterChart.tsx",
+    "src/data/fleet.ts",
+  ]) {
+    if (existsSync(resolve(root, retiredPath))) {
+      addViolation(retiredPath, "retired roster source still exists");
+    }
+  }
+  for (const requiredFooterText of [
+    "Mike Weinert",
+    "mike.weinert@cursor.com",
+  ]) {
+    if (!source.page.includes(requiredFooterText)) {
+      addViolation(requiredFiles.page, `missing footer text: ${requiredFooterText}`);
+    }
+  }
+}
+
 let candidates = [];
 try {
   candidates = listCandidates();
@@ -254,18 +326,28 @@ for (const candidate of candidates) {
 
   const text = contents.toString("utf8");
   inspectDeniedTerms(candidate, text);
+  if (
+    candidate !== "scripts/audit-esri-content.mjs" &&
+    (/watercolor-[^/]+\.png/i.test(candidate) ||
+      /watercolor-[^"'`)\s]+\.png/i.test(text))
+  ) {
+    addViolation(candidate, "retired watercolor PNG");
+  }
   if (/[\u2013\u2014]/u.test(text)) {
     addViolation(candidate, "prohibited dash character");
   }
   for (const source of externalImageSources(text)) {
-    if (source !== allowedExternalImageSource) {
-      addViolation(candidate, `external image source ${source}`);
-    }
+    addViolation(candidate, `external image source ${source}`);
   }
   inspectBrandReferences(candidate, text);
 }
 
 inspectPackage();
+try {
+  inspectRequiredContent();
+} catch {
+  addViolation(".", "unable to inspect required site content");
+}
 
 violations.sort(
   (left, right) =>

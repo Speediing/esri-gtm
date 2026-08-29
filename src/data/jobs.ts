@@ -19,8 +19,8 @@ export const DISCOVERY_SLIDES: SlideCard[] = [
     n: 3,
     kicker: "Draft for review",
     voice: "seller",
-    title: "Relevant Esri path",
-    body: "Map approved product material to the needs raised on the call.",
+    title: "Relevant ArcGIS path",
+    body: "Match approved ArcGIS material to the needs raised on the call.",
   },
   {
     n: 4,
@@ -33,13 +33,13 @@ export const DISCOVERY_SLIDES: SlideCard[] = [
 
 export const PRODUCT_ANSWER: Extract<Artifact, { kind: "redlines" }> = {
   kind: "redlines",
-  title: "Product answer brief",
+  title: "ArcGIS answer brief",
   paperTitle: "Questions to resolve",
   from: "Customer team",
   marks: [
     {
-      text: "What product guidance applies to this use case?",
-      note: "Match the request to approved Esri product documentation and include the source.",
+      text: "What ArcGIS guidance applies to this use case?",
+      note: "Match the request to approved ArcGIS documentation and include the source.",
       take: true,
     },
     {
@@ -61,14 +61,14 @@ export const PRODUCT_ANSWER: Extract<Artifact, { kind: "redlines" }> = {
   reply: {
     to: "Customer team",
     subject: "Product references for your review",
-    body: "Thanks for the questions. I gathered the relevant Esri product references and marked the points that still need internal review. The seller will confirm the final guidance before this draft is sent.",
+    body: "Thanks for the questions. I gathered the relevant ArcGIS references and marked the points that still need internal review. The seller will confirm the final guidance before this draft is sent.",
   },
 };
 
 export const ACCOUNT_RESEARCH: Extract<Artifact, { kind: "outbound" }> = {
   kind: "outbound",
-  title: "Sample account research",
-  account: "Sample account",
+  title: "Acme account research",
+  account: "Acme",
   hypothesis: [
     {
       k: "Why this account",
@@ -105,8 +105,8 @@ export const ACCOUNT_RESEARCH: Extract<Artifact, { kind: "outbound" }> = {
     },
   ],
   page: {
-    headline: "A source-linked note for Sample account",
-    body: "Summarize the public signal, the possible Esri fit, and the question the seller should validate before outreach.",
+    headline: "A source-linked note for Acme",
+    body: "Summarize the public signal, the possible location intelligence fit, and the question the seller should validate before outreach.",
   },
 };
 
@@ -114,7 +114,7 @@ export const JOBS: CroJob[] = [
   {
     id: "meeting-follow-up",
     number: 1,
-    title: "Turn live discovery into tailored follow-up",
+    title: "Update decks in real time",
     trigger: "a customer call starts",
     backgroundAction: "Organizing live notes and updating draft materials",
     problem:
@@ -155,7 +155,7 @@ export const JOBS: CroJob[] = [
           kind: "deck-update",
           eyebrow: "Sample data",
           headline: "Customer priorities, organized",
-          product: "Relevant Esri material",
+          product: "Relevant ArcGIS mapping material",
           status: "Draft saved",
         },
       },
@@ -199,7 +199,7 @@ export const JOBS: CroJob[] = [
           id: "m1",
           from: "notes",
           kind: "routine",
-          body: "Sample account call detected. I am following the approved notes and organizing customer priorities, current workflows, and open review items.",
+          body: "Acme call detected. I am following the approved notes and organizing customer priorities, current workflows, and open review items.",
         },
         {
           id: "m2",
@@ -214,7 +214,7 @@ export const JOBS: CroJob[] = [
           draftLabel: "Discovery summary",
           artifact: {
             kind: "slides",
-            title: "Sample account discovery summary",
+            title: "Acme discovery summary",
             cards: DISCOVERY_SLIDES,
           },
         },
@@ -225,7 +225,7 @@ export const JOBS: CroJob[] = [
           draftLabel: "Customer brief",
           artifact: {
             kind: "one-pager",
-            title: "Sample account brief",
+            title: "Acme brief",
             eyebrow: "Illustrative sample",
             sections: [
               {
@@ -234,7 +234,7 @@ export const JOBS: CroJob[] = [
               },
               {
                 heading: "Relevant material",
-                body: "Attach approved Esri references that match the topics raised.",
+                body: "Attach approved ArcGIS references that match the topics raised.",
               },
               {
                 heading: "Open review",
@@ -253,7 +253,7 @@ export const JOBS: CroJob[] = [
             title: "Follow-up draft",
             to: "Customer team",
             subject: "Materials from our conversation",
-            body: "Thanks for the conversation. I organized the topics we covered and attached the relevant Esri material for your review. The seller will confirm the open items before sending.",
+            body: "Thanks for the conversation. I organized the topics we covered and attached the relevant ArcGIS material for your review. The seller will confirm the open items before sending.",
           },
         },
         {
@@ -268,13 +268,13 @@ export const JOBS: CroJob[] = [
   {
     id: "product-answers",
     number: 2,
-    title: "Prepare product answers from approved sources",
+    title: "Find product and internal answers fast",
     trigger: "a customer question arrives",
     backgroundAction: "Checking product guidance and internal context",
     problem:
       "A product question can bounce between several internal teams. The seller waits for context, and the customer waits for a clear answer.",
     botJob:
-      "Grok Bot gathers approved Esri documentation, internal guidance, and account context. It prepares a sourced draft and keeps unresolved points in review.",
+      "Grok Bot gathers approved ArcGIS documentation, internal GIS guidance, and account context. It prepares a sourced draft and keeps unresolved points in review.",
     storyboard: [
       {
         when: "New request",
@@ -283,7 +283,7 @@ export const JOBS: CroJob[] = [
         visual: {
           kind: "product-request",
           sender: "Customer team",
-          subject: "Product fit and deployment questions",
+          subject: "ArcGIS fit and deployment questions",
           request: "Review requested",
         },
       },
@@ -294,7 +294,7 @@ export const JOBS: CroJob[] = [
         visual: {
           kind: "answers-found",
           sources: [
-            { name: "Esri product docs", answer: "Relevant references found" },
+            { name: "ArcGIS product docs", answer: "Relevant references found" },
             { name: "Internal guidance", answer: "Approved context found" },
             { name: "Account notes", answer: "Request context found" },
           ],
@@ -341,7 +341,7 @@ export const JOBS: CroJob[] = [
           id: "m1",
           from: "answers",
           kind: "routine",
-          body: "A sample customer question arrived. I am checking approved Esri documentation, internal guidance, and the account notes.",
+          body: "An Acme product question arrived. I am checking approved ArcGIS documentation, internal GIS guidance, and the account notes.",
         },
         {
           id: "m2",
@@ -381,21 +381,21 @@ export const JOBS: CroJob[] = [
   {
     id: "account-research",
     number: 3,
-    title: "Turn public signals into reviewable outreach",
+    title: "Pipeline generation is now easier than ever.",
     trigger: "an account enters the target list",
     backgroundAction: "Researching public sources and preparing draft outreach",
     problem:
       "Account research is easy to skip when the seller has to open every source and assemble the context by hand. Generic outreach is the usual result.",
     botJob:
-      "Grok Bot checks public sources, links each useful note, and prepares a research brief. It drafts outreach only after a relevant role and possible Esri fit are identified.",
+      "Grok Bot checks public sources, links each useful note, and prepares a research brief. It drafts outreach only after a relevant role and possible location intelligence fit are identified.",
     storyboard: [
       {
         when: "Target list update",
-        label: "A sample account enters the list. The research agent checks public sources.",
+        label: "Acme enters the list. The research agent checks public sources.",
         scene: "inspect",
         visual: {
           kind: "account-research",
-          account: "Sample account",
+          account: "Acme",
           sources: ["Company pages", "Open roles", "Press releases"],
           signal: "Public source found",
         },
@@ -453,7 +453,7 @@ export const JOBS: CroJob[] = [
           id: "m1",
           from: "research",
           kind: "routine",
-          body: "Sample account entered the target list. I am checking public company pages, open roles, and press releases. Every note will keep its source.",
+          body: "Acme entered the target list. I am checking public company pages, open roles, and press releases. Every note will keep its source.",
         },
         {
           id: "m2",
@@ -468,7 +468,7 @@ export const JOBS: CroJob[] = [
           draftLabel: "Account brief",
           artifact: {
             kind: "packet",
-            title: "Sample account research plan",
+            title: "Acme research plan",
             fields: ACCOUNT_RESEARCH.hypothesis.map((item) => ({
               label: item.k,
               value: item.body,
@@ -499,7 +499,7 @@ export const JOBS: CroJob[] = [
             title: "Role-based outreach draft",
             to: "Relevant business leader",
             role: "Role confirmed from public sources",
-            body: "I prepared a short, source-linked note for review. It connects a published priority to a possible Esri conversation without assuming product fit.",
+            body: "I prepared a short, source-linked note for review. It connects a published priority to a possible location intelligence conversation without assuming product fit.",
           },
         },
         {

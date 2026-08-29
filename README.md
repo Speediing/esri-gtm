@@ -28,8 +28,4 @@ npm run build
 
 ## Brand assets
 
-The lockup loads the Esri mark from the official [Esri-hosted asset](https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg). The site uses the mark in its entirety. `public/brand/spacexai.svg` contains the SpaceXAI wordmark.
-
-## Deploy
-
-Deploy the `esri-grokbot` project to the `jasonwiker` Vercel scope. Set `SITE_PASSWORD` in Vercel. Do not add the password value to tracked files.
+`public/brand/esri-wordmark.jpg` is the official Esri mark, stored locally and used in its entirety. `public/brand/spacexai.svg` contains the SpaceXAI wordmark. `public/brand/esri-falcon-cartography.jpg` is the Esri and Falcon hero illustration.

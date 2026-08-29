@@ -4,7 +4,6 @@ import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
-import { RosterChart } from "@/components/RosterChart";
 import { SiteNav } from "@/components/SiteNav";
 import { JOBS } from "@/data/jobs";
 
@@ -14,10 +13,10 @@ export default function HomePage() {
       <div className="hero-watercolor">
         <Image
           className="hero-watercolor-image"
-          src="/brand/watercolor-pad.png"
+          src="/brand/esri-falcon-cartography.jpg"
           alt=""
-          width={1640}
-          height={922}
+          width={1280}
+          height={720}
           priority
         />
         <SiteNav />
@@ -31,17 +30,14 @@ export default function HomePage() {
           <section className="usecase-framing">
             <p className="eyebrow">Three sample use cases</p>
             <h2>
-              Grok Bot gives each seller a fleet of agents with their own
-              computers. They keep the work around each customer moving.
+              Three sales moments where agents turn context into work ready
+              for review.
             </h2>
             <p>
-              These examples cover a live call, a product question, and account
-              research. They use illustrative sample data. Nothing is sent
-              without seller approval.
+              Each scene uses Acme. Drafts stay in review until a rep approves
+              them.
             </p>
           </section>
-
-          <RosterChart />
 
           <div className="metric-grid">
             {JOBS.map((job) => (
@@ -70,10 +66,10 @@ export default function HomePage() {
       <div className="orbit-break" aria-hidden>
         <Image
           className="orbit-watercolor-image"
-          src="/brand/watercolor-orbit.png"
+          src="/brand/esri-falcon-cartography.jpg"
           alt=""
-          width={1640}
-          height={922}
+          width={1280}
+          height={720}
         />
       </div>
 
