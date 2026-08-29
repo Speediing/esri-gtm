@@ -11,8 +11,8 @@ export function BrandLockup({
         src="/brand/esri-wordmark.jpg"
         alt="Esri"
         className="brand-esri"
-        width={270}
-        height={117}
+        width={311}
+        height={112}
       />
       <span className="brand-times" aria-hidden>
         ×

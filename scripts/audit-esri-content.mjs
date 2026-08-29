@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   existsSync,
   lstatSync,
@@ -245,6 +246,21 @@ function inspectRequiredContent() {
 
   if (!source.lockup.includes('src="/brand/esri-wordmark.jpg"')) {
     addViolation(requiredFiles.lockup, "Esri wordmark must use the local official asset");
+  }
+  const officialWordmark = resolve(root, "public/brand/esri-wordmark.jpg");
+  if (existsSync(officialWordmark)) {
+    const checksum = createHash("sha256")
+      .update(readFileSync(officialWordmark))
+      .digest("hex");
+    if (
+      checksum !==
+      "1d5847096acc79525f90d757ea7f9e9d9640840357d0d4f6dfd640737ea1652d"
+    ) {
+      addViolation(
+        "public/brand/esri-wordmark.jpg",
+        "does not match the official Esri asset",
+      );
+    }
   }
   if (!source.page.includes('src="/brand/esri-falcon-cartography.jpg"')) {
     addViolation(requiredFiles.page, "missing Esri and Falcon hero art");
