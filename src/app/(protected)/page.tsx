@@ -20,14 +20,6 @@ export default function HomePage() {
           height={922}
           priority
         />
-        <Image
-          className="hero-cartography-overlay"
-          src="/brand/cartography-hero.svg"
-          alt=""
-          width={1600}
-          height={680}
-          priority
-        />
         <SiteNav />
       </div>
 
@@ -82,13 +74,6 @@ export default function HomePage() {
           alt=""
           width={1640}
           height={922}
-        />
-        <Image
-          className="orbit-cartography-overlay"
-          src="/brand/cartography-orbit.svg"
-          alt=""
-          width={1600}
-          height={320}
         />
       </div>
 

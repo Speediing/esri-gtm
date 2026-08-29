@@ -18,6 +18,9 @@ export function BrandLockup({
         </span>
       ) : (
         <Image
+          // TODO: Replace this temporary remote reference with a local copy from
+          // https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg
+          // when access is available. Do not substitute or generate a mark.
           src="https://www.esri.com/content/dam/esrisites/common/logos/esri-logo.jpg"
           alt="Esri"
           className="brand-esri"

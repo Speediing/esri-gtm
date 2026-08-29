@@ -4,19 +4,10 @@ import { Storyboard } from "./Storyboard";
 import { ChapterPayoff } from "./ChapterPayoff";
 import { JobMore } from "./JobMore";
 
-const JOB_ART: Record<JobId, { watercolor: string; cartography: string }> = {
-  "meeting-follow-up": {
-    watercolor: "/brand/watercolor-room.png",
-    cartography: "/brand/cartography-call.svg",
-  },
-  "product-answers": {
-    watercolor: "/brand/watercolor-deal.png",
-    cartography: "/brand/cartography-answers.svg",
-  },
-  "account-research": {
-    watercolor: "/brand/watercolor-attach.png",
-    cartography: "/brand/cartography-research.svg",
-  },
+const JOB_ART: Record<JobId, string> = {
+  "meeting-follow-up": "/brand/watercolor-room.png",
+  "product-answers": "/brand/watercolor-deal.png",
+  "account-research": "/brand/watercolor-attach.png",
 };
 
 export function JobSection({ job }: { job: CroJob }) {
@@ -33,17 +24,10 @@ export function JobSection({ job }: { job: CroJob }) {
         <div className="job-art" aria-hidden>
           <Image
             className="job-watercolor"
-            src={JOB_ART[job.id].watercolor}
+            src={JOB_ART[job.id]}
             alt=""
             width={984}
             height={542}
-          />
-          <Image
-            className="job-cartography"
-            src={JOB_ART[job.id].cartography}
-            alt=""
-            width={640}
-            height={640}
           />
         </div>
         <div className="background-agent">
