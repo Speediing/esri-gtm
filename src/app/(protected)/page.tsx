@@ -14,6 +14,14 @@ export default function HomePage() {
       <div className="hero-watercolor">
         <Image
           className="hero-watercolor-image"
+          src="/brand/watercolor-pad.png"
+          alt=""
+          width={1640}
+          height={922}
+          priority
+        />
+        <Image
+          className="hero-cartography-overlay"
           src="/brand/cartography-hero.svg"
           alt=""
           width={1600}
@@ -69,6 +77,14 @@ export default function HomePage() {
 
       <div className="orbit-break" aria-hidden>
         <Image
+          className="orbit-watercolor-image"
+          src="/brand/watercolor-orbit.png"
+          alt=""
+          width={1640}
+          height={922}
+        />
+        <Image
+          className="orbit-cartography-overlay"
           src="/brand/cartography-orbit.svg"
           alt=""
           width={1600}

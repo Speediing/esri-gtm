@@ -4,10 +4,19 @@ import { Storyboard } from "./Storyboard";
 import { ChapterPayoff } from "./ChapterPayoff";
 import { JobMore } from "./JobMore";
 
-const JOB_ART: Record<JobId, string> = {
-  "meeting-follow-up": "/brand/cartography-call.svg",
-  "product-answers": "/brand/cartography-answers.svg",
-  "account-research": "/brand/cartography-research.svg",
+const JOB_ART: Record<JobId, { watercolor: string; cartography: string }> = {
+  "meeting-follow-up": {
+    watercolor: "/brand/watercolor-room.png",
+    cartography: "/brand/cartography-call.svg",
+  },
+  "product-answers": {
+    watercolor: "/brand/watercolor-deal.png",
+    cartography: "/brand/cartography-answers.svg",
+  },
+  "account-research": {
+    watercolor: "/brand/watercolor-attach.png",
+    cartography: "/brand/cartography-research.svg",
+  },
 };
 
 export function JobSection({ job }: { job: CroJob }) {
@@ -22,7 +31,20 @@ export function JobSection({ job }: { job: CroJob }) {
       </p>
       <div>
         <div className="job-art" aria-hidden>
-          <Image src={JOB_ART[job.id]} alt="" width={640} height={640} />
+          <Image
+            className="job-watercolor"
+            src={JOB_ART[job.id].watercolor}
+            alt=""
+            width={984}
+            height={542}
+          />
+          <Image
+            className="job-cartography"
+            src={JOB_ART[job.id].cartography}
+            alt=""
+            width={640}
+            height={640}
+          />
         </div>
         <div className="background-agent">
           <span className="background-agent-pulse" aria-hidden />
