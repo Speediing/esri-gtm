@@ -1,7 +1,9 @@
 import Image from "next/image";
 import { CompareTable } from "@/components/CompareTable";
+import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
+import { QuoteWall } from "@/components/QuoteWall";
 import { RosterChart } from "@/components/RosterChart";
 import { SiteNav } from "@/components/SiteNav";
 import { JOBS } from "@/data/jobs";
@@ -24,17 +26,7 @@ export default function HomePage() {
       <div className="report">
         <div className="report-hero">
           <HeroTelemetry />
-          <section className="hero">
-            <div>
-              <p className="eyebrow">A proactive agent for every Esri seller</p>
-              <h1>Agents keep the work around every customer moving.</h1>
-              <p className="hero-intro">
-                Grok Bot can follow approved call notes, watch for customer
-                questions, and research accounts in the background. Work starts
-                the agent.
-              </p>
-            </div>
-          </section>
+          <HeroDemo />
 
           <section className="usecase-framing">
             <p className="eyebrow">Three sample use cases</p>
@@ -86,6 +78,7 @@ export default function HomePage() {
 
       <div className="report">
         <CompareTable />
+        <QuoteWall />
       </div>
 
       <footer className="site-footer">
