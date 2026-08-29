@@ -325,6 +325,7 @@ button:active:not(:focus-visible),
 }
 
 .brand-esri,
+.brand-esri-fallback,
 .brand-sxai {
   display: block;
   width: auto;
@@ -336,6 +337,15 @@ button:active:not(:focus-visible),
 
 .brand-esri {
   height: var(--brand-h);
+}
+
+.brand-esri-fallback {
+  height: var(--brand-h);
+  color: var(--ink);
+  font-size: calc(var(--brand-h) * 0.82);
+  font-weight: 650;
+  letter-spacing: -0.07em;
+  line-height: var(--brand-h);
 }
 
 .brand-sxai {
@@ -553,6 +563,7 @@ button:active:not(:focus-visible),
   min-width: 0;
   place-items: center;
   padding: 2.2rem 1rem;
+  isolation: isolate;
 }
 
 .hero-bot-demo::before {
@@ -5994,6 +6005,18 @@ button:active:not(:focus-visible),
 
   .site-header {
     justify-content: space-between;
+  }
+
+  .header-actions {
+    flex: 0 0 auto;
+  }
+
+  .header-actions .text-button {
+    white-space: nowrap;
+  }
+
+  .header-actions .text-button:last-child {
+    display: none;
   }
 
   .hero-demo {
